@@ -6,14 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/lstv_readings"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Spacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/main_students"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
+
+            <TextView
+                style="@style/Spacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:gravity="center"
+                android:text="@string/main_readings"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3" />
+
+            <ListView
+                android:id="@+id/lstv_readings"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/flactbtn_add_reading"
@@ -21,9 +57,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:onClick="onAddReadingButtonClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
-        android:onClick="onAddReadingButtonClick"/>
-
+        app:tint="@android:color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

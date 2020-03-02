@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Vu_Gilpin</string>
-    <string name="main_user_id">User ID</string>
-    <string name="main_reading_date">Reading date</string>
-    <string name="main_systolic_reading">Systolic reading</string>
-    <string name="main_diastolic_reading">Diastolic reading</string>
-    <string name="main_reading_time">Reading time</string>
-    <string name="main_add">Add</string>
+    <string name="newreading_user_id">User ID</string>
+    <string name="newreading_reading_date">Reading date</string>
+    <string name="newreading_systolic_reading">Systolic reading</string>
+    <string name="newreading_diastolic_reading">Diastolic reading</string>
+    <string name="newreading_reading_time">Reading time</string>
+    <string name="newreading_add">Add</string>
+    <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A)</string>
+    <string name="main_readings">Blood Pressure</string>
 </resources>
