@@ -7,5 +7,6 @@
     <string name="newreading_reading_time">Reading time</string>
     <string name="newreading_add">Add</string>
     <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A)</string>
-    <string name="main_readings">Blood Pressure</string>
+    <string name="main_users">Available Users</string>
+    <string name="readinglist_readings">Blood Pressure Reading</string>
 </resources>

@@ -12,6 +12,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".ReadingListActivity"
+            android:label="Reading List" />
+        <activity
             android:name=".NewReadingActivity"
             android:label="New Reading" />
         <activity android:name=".MainActivity">
