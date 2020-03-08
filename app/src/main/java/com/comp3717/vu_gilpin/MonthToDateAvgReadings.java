@@ -76,7 +76,7 @@ public class MonthToDateAvgReadings extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // nothing happens
             }
         });
     }

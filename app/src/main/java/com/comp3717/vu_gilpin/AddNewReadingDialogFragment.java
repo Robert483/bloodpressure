@@ -5,8 +5,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.DialogFragment;
 
@@ -16,7 +14,7 @@ public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
         void onDialogPositiveClick(DialogFragment dialog);
     }
 
-    DialogListener listener;
+    private DialogListener listener;
 
     @Override
     public void onAttach(Context context) {
