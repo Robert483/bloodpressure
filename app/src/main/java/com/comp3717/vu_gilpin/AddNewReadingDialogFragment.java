@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment;
 public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
 
     public interface DialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
+        void onDialogPositiveClick(DialogFragment dialog);
     }
 
     DialogListener listener;
@@ -31,8 +31,6 @@ public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        LayoutInflater inflater = requireActivity().getLayoutInflater();
-//        final View dialogView = inflater.inflate(R.layout.dialog_add_reading, null);
 
         builder.setView(R.layout.dialog_add_reading)
                 .setTitle(R.string.add_reading_title)
