@@ -3,13 +3,10 @@ package com.comp3717.vu_gilpin;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,20 +38,18 @@ public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
         editTextSystolic = dialogView.findViewById(R.id.systolicReading);
         editTextDiastolic = dialogView.findViewById(R.id.diastolicReading);
 
-
         builder.setView(dialogView)
                 .setTitle(R.string.add_reading_title)
                 .setPositiveButton(R.string.newreading_add, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        FirebaseDatabase.getInstance().getReference("test").setValue("MEOW");
                         // get input from EditText
                         String systolic = editTextSystolic.getText().toString();
                         String diastolic = editTextDiastolic.getText().toString();
 
                         if (systolic.isEmpty() || diastolic.isEmpty()) {
                             // do nothing
-                            Toast.makeText(getContext(), "Empty Field", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), R.string.empty_field, Toast.LENGTH_LONG).show();
                         } else {
                             // add to firebase
                             BloodPressureReading bloodPressureReading = new BloodPressureReading();
@@ -62,12 +57,14 @@ public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
                             bloodPressureReading.setDiastolicReading(Integer.parseInt(diastolic));
                             bloodPressureReading.setReadingDate(new Date());
                             String readingId = databaseReference.push().getKey();
+
+                            // Notify user of success or fail
                             Task setValueTask = databaseReference.child(readingId)
                                     .setValue(bloodPressureReading);
                             setValueTask.addOnSuccessListener(new OnSuccessListener() {
                                 @Override
                                 public void onSuccess(Object o) {
-                                    Toast.makeText(getContext(), "MEOW", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), R.string.add_success, Toast.LENGTH_LONG).show();
                                 }
                             });
                             setValueTask.addOnFailureListener(new OnFailureListener() {

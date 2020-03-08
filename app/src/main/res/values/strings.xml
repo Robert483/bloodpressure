@@ -15,4 +15,5 @@
     <string name="name">Name</string>
     <string name="avg_condition">Average Condition</string>
     <string name="empty_field">One or more fields are empty…</string>
+    <string name="add_success">Reading Successfully Added</string>
 </resources>
