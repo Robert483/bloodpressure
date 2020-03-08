@@ -24,7 +24,7 @@
     <string name="condition_warning">Consult your doctor immediately</string>
     <string name="add_reading_title">Add Blood Pressure Reading</string>
     <string name="cancel">Cancel</string>
-    <string name="mtd_title">Month-To-Date Average Readings For</string>
+    <string name="mtd_title">Month-to-Date Average Readings for</string>
     <string name="name">Name</string>
     <string name="avg_condition">Average Condition</string>
     <string name="empty_field">One or more fields are empty…</string>
@@ -42,10 +42,10 @@
     <string name="main_no_name">Name cannot be empty.</string>
     <string name="main_added">User added.</string>
     <string name="main_internal_id">Internal ID: %s</string>
-    <string name="report_name">Name</string>
-    <string name="report_condition">Average conditon</string>
-    <string name="report_title">Report</string>
-    <string name="report_header">Month-to-date average readings for %s</string>
+
+    <string name="mtd_label">Month-to-Date Report</string>
+    <string name="reading_list_label">Reading List for</string>
+    <string name="reading_details_label">Reading Details</string>
 
     <string name="na">N/A</string>
 </resources>

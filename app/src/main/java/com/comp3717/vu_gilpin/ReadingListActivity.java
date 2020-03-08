@@ -48,6 +48,8 @@ public class ReadingListActivity extends AppCompatActivity
         this.lvReadings = findViewById(R.id.lstv_readings);
         this.readingList = new ArrayList<>();
 
+        setTitle(this.getTitle() + " " + userId);
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

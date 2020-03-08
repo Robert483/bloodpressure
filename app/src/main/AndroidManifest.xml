@@ -11,13 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MonthToDateAvgReadings"></activity>
+        <activity
+            android:name=".MonthToDateAvgReadings"
+            android:label="@string/mtd_label"/>
         <activity
             android:name=".ReadingListActivity"
-            android:label="Reading List" />
+            android:label="@string/reading_list_label" />
         <activity
             android:name=".ReadingDetailsActivity"
-            android:label="Reading Details" />
+            android:label="@string/reading_details_label" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
