@@ -22,6 +22,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
             android:background="@color/colorDivider" />
 
         <TextView
@@ -33,11 +34,15 @@
             android:text="@string/main_users"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider" />
+
         <ListView
             android:id="@+id/lstv_users"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@android:layout/simple_list_item_1" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
