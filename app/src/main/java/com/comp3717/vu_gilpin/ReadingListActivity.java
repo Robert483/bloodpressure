@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
@@ -17,7 +18,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ReadingListActivity extends AppCompatActivity {
     private ListView lvReadings;
@@ -29,11 +29,15 @@ public class ReadingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading_list);
         Intent intent = getIntent();
+        LayoutInflater inflater = this.getLayoutInflater();
 
         this.userKey = intent.getStringExtra("userKey");
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("readings"+userKey);
         this.lvReadings = findViewById(R.id.lstv_readings);
         this.readingList = new ArrayList<>();
+
+        View footerView = inflater.inflate(R.layout.footer_view, null, false);
+        lvReadings.addFooterView(footerView);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -56,5 +60,11 @@ public class ReadingListActivity extends AppCompatActivity {
     public void onAddReadingButtonClick(View view) {
         new AddNewReadingDialogFragment(userKey).show(getSupportFragmentManager(),
                 "AddNewReadingDialogFragment");
+    }
+
+    public void onMonthToDate(View view) {
+        Intent intent = new Intent(ReadingListActivity.this, MonthToDateAvgReadings.class);
+        intent.putExtra("userKey", userKey);
+        startActivity(intent);
     }
 }
