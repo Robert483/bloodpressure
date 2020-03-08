@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.comp3717.vu_gilpin.adapters.UserIDArrayAdapter;
+import com.comp3717.vu_gilpin.adapters.UserArrayAdapter;
 import com.comp3717.vu_gilpin.models.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().getReference("test").setValue(new Date());
 
-        final ArrayAdapter<User> adapter = new UserIDArrayAdapter(this, R.layout.item_userid);
+        final ArrayAdapter<User> adapter = new UserArrayAdapter(this, R.layout.item_userid);
         ListView listView = findViewById(R.id.lstv_users);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 setValueTask.addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(MainActivity.this, R.string.main_user_added, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.main_added, Toast.LENGTH_SHORT).show();
                     }
                 });
                 dialog.dismiss();

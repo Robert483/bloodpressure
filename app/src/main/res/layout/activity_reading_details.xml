@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
+                android:focusable="false"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName" />
 
@@ -55,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
+                android:focusable="false"
                 android:importantForAutofill="no"
                 android:inputType="date" />
 
@@ -80,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
+                android:focusable="false"
                 android:importantForAutofill="no"
                 android:inputType="time" />
 
@@ -133,9 +136,10 @@
 
         <TextView
             android:id="@+id/txtv_condition"
-            style="@style/Spacing"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:gravity="center"
             android:paddingVertical="8dp" />
 
@@ -150,7 +154,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/readingdetails_ic_update"
-                android:text="@string/readingdetails_update"
+                android:focusable="false"
+                android:onClick="onUpdateButtonClick"
+                android:text="@string/app_update"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
                 tools:ignore="RtlHardcoded" />
 
@@ -162,7 +168,9 @@
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_red_light"
                 android:drawableLeft="@drawable/readingdetails_ic_delete"
-                android:text="@string/readingdetails_delete"
+                android:focusable="false"
+                android:onClick="onDeleteButtonClick"
+                android:text="@string/app_delete"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
                 tools:ignore="RtlHardcoded" />
 

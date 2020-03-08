@@ -14,20 +14,20 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class UserIDArrayAdapter extends ArrayAdapter<User> {
+public class UserArrayAdapter extends ArrayAdapter<User> {
     private int resouce;
 
-    public UserIDArrayAdapter(@NonNull Context context, int resource) {
+    public UserArrayAdapter(@NonNull Context context, int resource) {
         super(context, resource);
         this.resouce = resource;
     }
 
-    public UserIDArrayAdapter(@NonNull Context context, int resource, @NonNull User[] objects) {
+    public UserArrayAdapter(@NonNull Context context, int resource, @NonNull User[] objects) {
         super(context, resource, objects);
         this.resouce = resource;
     }
 
-    public UserIDArrayAdapter(@NonNull Context context, int resource, @NonNull List<User> objects) {
+    public UserArrayAdapter(@NonNull Context context, int resource, @NonNull List<User> objects) {
         super(context, resource, objects);
         this.resouce = resource;
     }

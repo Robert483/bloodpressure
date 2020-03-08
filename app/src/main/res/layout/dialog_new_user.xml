@@ -4,20 +4,22 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        style="@style/Spacing"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:labelFor="@id/edttxt_user_id"
-        android:text="@string/main_user_id" />
+        android:layout_marginHorizontal="16dp">
 
-    <EditText
-        android:id="@+id/edttxt_user_id"
-        style="@style/Spacing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edttxt_user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="@string/main_user_id"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
