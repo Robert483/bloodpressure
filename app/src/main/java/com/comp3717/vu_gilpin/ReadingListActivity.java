@@ -15,7 +15,8 @@ public class ReadingListActivity extends AppCompatActivity {
     }
 
     public void onAddReadingButtonClick(View view) {
-        Intent intent = new Intent(this, NewReadingActivity.class);
+        // REMOVE THIS WHEN MERGE
+        Intent intent = new Intent(this, ReadingDetailsActivity.class);
         startActivity(intent);
     }
 }

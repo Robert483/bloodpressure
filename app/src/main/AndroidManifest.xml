@@ -15,8 +15,8 @@
             android:name=".ReadingListActivity"
             android:label="Reading List" />
         <activity
-            android:name=".NewReadingActivity"
-            android:label="New Reading" />
+            android:name=".ReadingDetailsActivity"
+            android:label="Reading Details" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

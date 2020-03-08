@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     private DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseDatabase.getInstance().getReference("test").setValue(new Date());
 
         final ArrayAdapter<User> adapter = new UserIDArrayAdapter(this, R.layout.item_userid);
         ListView listView = findViewById(R.id.lstv_users);
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(MainActivity.this, ReadingListActivity.class);
-                intent.putExtra("user", user.getUserId());
+                intent.putExtra("userId", user.getUserId());
                 intent.putExtra("userKey", user.getKey());
                 startActivity(intent);
             }
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this, R.string.main_operation_cancelled, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.app_operation_cancelled, Toast.LENGTH_SHORT).show();
             }
         });
     }
