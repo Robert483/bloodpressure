@@ -9,4 +9,10 @@
     <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A)</string>
     <string name="main_users">Available Users</string>
     <string name="readinglist_readings">Blood Pressure Reading</string>
+    <string name="add_reading_title">Add Blood Pressure Reading</string>
+    <string name="cancel">Cancel</string>
+    <string name="mtd_title">Month-to-date average readings for</string>
+    <string name="name">Name</string>
+    <string name="avg_condition">Average Condition</string>
+    <string name="empty_field">One or more fields are empty…</string>
 </resources>
