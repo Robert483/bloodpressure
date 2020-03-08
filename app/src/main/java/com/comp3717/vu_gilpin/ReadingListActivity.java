@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -53,10 +54,21 @@ public class ReadingListActivity extends AppCompatActivity
                 readingList.clear();
                 for (DataSnapshot readingSnapshot: dataSnapshot.getChildren()) {
                     BloodPressureReading reading = readingSnapshot.getValue(BloodPressureReading.class);
+                    reading.setReadingKey(readingSnapshot.getKey());
                     readingList.add(reading);
                 }
                 ReadingListAdapter adapter = new ReadingListAdapter(ReadingListActivity.this, readingList);
                 lvReadings.setAdapter(adapter);
+                lvReadings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(ReadingListActivity.this, ReadingDetailsActivity.class);
+                        intent.putExtra("userKey", userKey);
+                        intent.putExtra("userId", userId);
+                        intent.putExtra("readingKey", readingList.get((int)id).getReadingKey());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

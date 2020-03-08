@@ -13,7 +13,7 @@
     <string name="readingdetails_condition"><![CDATA[Condition<br>%s]]></string>
     <string name="readingdetails_updated">Reading updated.</string>
     <string name="readingdetails_deleted">Reading deleted.</string>
-    <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A)</string>
+    <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A01063832)</string>
     <string name="main_users">Available Users</string>
     <string name="readinglist_readings">Blood Pressure Reading</string>
     <string name="condition_normal"><![CDATA[<font color="#00B050">Normal</font>]]></string>
@@ -46,4 +46,6 @@
     <string name="report_condition">Average conditon</string>
     <string name="report_title">Report</string>
     <string name="report_header">Month-to-date average readings for %s</string>
+
+    <string name="na">N/A</string>
 </resources>

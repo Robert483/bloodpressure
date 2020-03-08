@@ -59,19 +59,25 @@ public class MonthToDateAvgReadings extends AppCompatActivity {
                     diastolicSum += reading.getDiastolicReading();
                     count++;
                 }
-
                 tvSystolic = findViewById(R.id.mtd_systolic);
-                float avgSystolic = systolicSum/count;
-                tvSystolic.setText(String.format("%.2f", avgSystolic));
-
                 tvDiastolic = findViewById(R.id.mtd_diastolic);
-                float avgDiastolic = diastolicSum/count;
-                tvDiastolic.setText(String.format("%.2f", avgDiastolic));
-
                 tvCondition = findViewById(R.id.mtd_condition);
-                String condition = ConditionService.getCondition(
-                        MonthToDateAvgReadings.this, avgSystolic, avgDiastolic);
-                tvCondition.setText(Html.fromHtml(condition, Html.FROM_HTML_MODE_COMPACT));
+
+                if (count == 0) {
+                    tvCondition.setText(R.string.na);
+                    tvSystolic.setText(R.string.na);
+                    tvDiastolic.setText(R.string.na);
+                } else {
+                    float avgSystolic = systolicSum/count;
+                    tvSystolic.setText(String.format("%.2f", avgSystolic));
+
+                    float avgDiastolic = diastolicSum/count;
+                    tvDiastolic.setText(String.format("%.2f", avgDiastolic));
+
+                    String condition = ConditionService.getCondition(
+                            MonthToDateAvgReadings.this, avgSystolic, avgDiastolic);
+                    tvCondition.setText(Html.fromHtml(condition, Html.FROM_HTML_MODE_COMPACT));
+                }
             }
 
             @Override
