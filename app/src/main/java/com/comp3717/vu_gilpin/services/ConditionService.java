@@ -6,7 +6,7 @@ import com.comp3717.vu_gilpin.R;
 
 public class ConditionService {
 
-    public static String getCondition(Context context, int systolicReading, int diastolicReading) {
+    public static String getCondition(Context context, float systolicReading, float diastolicReading) {
         if (diastolicReading < 80) {
             if (systolicReading < 120) {
                 return context.getString(R.string.condition_normal);

@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:labelFor="@id/edttxt_systolic_reading"
-            android:text="@string/readingdetails_systolic_reading" />
+            android:text="@string/app_systolic" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:labelFor="@id/edttxt_diastolic_reading"
-            android:text="@string/readingdetails_diastolic_reading" />
+            android:text="@string/app_diastolic" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -140,6 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            android:fontFamily="sans-serif-thin"
             android:gravity="center"
             android:paddingVertical="8dp" />
 

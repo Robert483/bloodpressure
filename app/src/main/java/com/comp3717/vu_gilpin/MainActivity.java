@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseDatabase.getInstance().getReference("test").setValue(new Date());
-
         final ArrayAdapter<User> adapter = new UserArrayAdapter(this, R.layout.item_userid);
         ListView listView = findViewById(R.id.lstv_users);
         listView.setAdapter(adapter);
