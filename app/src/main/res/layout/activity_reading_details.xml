@@ -23,7 +23,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp">
+            android:layout_marginHorizontal="@dimen/spacing_full">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edttxt_user_id"
@@ -48,7 +48,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp">
+            android:layout_marginHorizontal="@dimen/spacing_full">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edttxt_reading_date"
@@ -74,7 +74,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp">
+            android:layout_marginHorizontal="@dimen/spacing_full">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edttxt_reading_time"
@@ -99,7 +99,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp">
+            android:layout_marginHorizontal="@dimen/spacing_full">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edttxt_systolic_reading"
@@ -122,7 +122,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp">
+            android:layout_marginHorizontal="@dimen/spacing_full">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edttxt_diastolic_reading"
@@ -139,10 +139,10 @@
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/spacing_full"
             android:fontFamily="sans-serif-thin"
             android:gravity="center"
-            android:paddingVertical="8dp" />
+            android:paddingVertical="@dimen/spacing_half" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginHorizontal="@dimen/spacing_full"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/readingdetails_ic_update"
                 android:focusable="false"
@@ -165,7 +165,7 @@
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginHorizontal="@dimen/spacing_full"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_red_light"
                 android:drawableLeft="@drawable/readingdetails_ic_delete"

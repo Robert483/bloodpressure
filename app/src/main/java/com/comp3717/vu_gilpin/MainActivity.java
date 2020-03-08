@@ -24,8 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Date;
-
 public class MainActivity extends AppCompatActivity {
     private DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
 
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ArrayAdapter<User> adapter = new UserArrayAdapter(this, R.layout.item_userid);
+        final ArrayAdapter<User> adapter = new UserArrayAdapter(this, R.layout.item_user);
         ListView listView = findViewById(R.id.lstv_users);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
