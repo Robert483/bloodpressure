@@ -28,15 +28,18 @@
             android:id="@+id/lstv_readings"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/readings_title"/>
+            android:layout_below="@id/readings_title"
+            android:layout_above="@id/btn_mtd"/>
 
         <Button
             android:id="@+id/btn_mtd"
+            android:layout_marginHorizontal="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onMonthToDate"
             android:text="@string/mtd_btn"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
     </RelativeLayout>
 

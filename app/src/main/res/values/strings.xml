@@ -22,7 +22,7 @@
     <string name="avg_condition">Average Condition</string>
     <string name="empty_field">One or more fields are empty…</string>
     <string name="add_success">Reading Successfully Added</string>
-    <string name="mtd_btn">Month To Date Report</string>
+    <string name="mtd_btn">View Report</string>
     <string name="warning">
         <![CDATA[<font color="#FF0000">
         WARNING: HYPERTENSIVE CRISIS! See doctor immediately

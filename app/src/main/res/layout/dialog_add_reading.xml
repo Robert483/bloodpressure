@@ -9,13 +9,15 @@
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/newreading_systolic_reading" />
+        android:hint="@string/newreading_systolic_reading"
+        android:layout_margin="10dp"/>
 
     <EditText
         android:id="@+id/diastolicReading"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/newreading_diastolic_reading" />
+        android:hint="@string/newreading_diastolic_reading"
+        android:layout_margin="10dp"/>
 
 </LinearLayout>
