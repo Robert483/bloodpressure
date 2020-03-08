@@ -7,6 +7,13 @@ public class User {
     private String key;
     private String userId;
 
+    public User() {
+    }
+
+    public User(String userId) {
+        this.userId = userId;
+    }
+
     public String getKey() {
         return key;
     }

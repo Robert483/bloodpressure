@@ -36,15 +36,17 @@ public class UserIDArrayAdapter extends ArrayAdapter<User> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(parent.getContext(), resouce, null);
+            convertView = View.inflate(getContext(), resouce, null);
         }
 
         User user = getItem(position);
         if (user != null) {
+            String internalId = parent.getContext().getString(R.string.main_internal_id, user.getKey());
+
             TextView textView = convertView.findViewById(R.id.txtv_userid);
             textView.setText(user.getUserId());
             textView = convertView.findViewById(R.id.txtv_userkey);
-            textView.setText(user.getKey());
+            textView.setText(internalId);
         }
 
         return convertView;
