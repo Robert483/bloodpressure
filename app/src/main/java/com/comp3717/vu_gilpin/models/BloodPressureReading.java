@@ -34,17 +34,4 @@ public class BloodPressureReading {
     public void setDiastolicReading(Integer diastolicReading) {
         this.diastolicReading = diastolicReading;
     }
-    public Condition getCondition() {
-        if (systolicReading > 180 || diastolicReading > 120) {
-            return Condition.HYPERTENSIVE;
-        } else if (systolicReading >= 140 || diastolicReading >= 90) {
-            return Condition.STAGE2;
-        } else if (systolicReading >= 130 || diastolicReading >= 80) {
-            return Condition.STAGE1;
-        } else if (systolicReading >= 120) {
-            return Condition.ELEVATED;
-        } else {
-            return Condition.NORMAL;
-        }
-    }
 }

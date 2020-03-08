@@ -6,18 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ReadingListActivity">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/parent_readings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDivider" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             style="@style/Spacing"
+            android:id="@+id/readings_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-thin"
@@ -25,12 +23,22 @@
             android:text="@string/readinglist_readings"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3" />
 
+
         <ListView
             android:id="@+id/lstv_readings"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/readings_title"/>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btn_mtd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onMonthToDate"
+            android:text="@string/mtd_btn"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/flactbtn_add_reading"

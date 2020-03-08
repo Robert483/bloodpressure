@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.comp3717.vu_gilpin.models.BloodPressureReading;
+import com.comp3717.vu_gilpin.services.ConditionService;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -64,15 +66,21 @@ public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
                             setValueTask.addOnSuccessListener(new OnSuccessListener() {
                                 @Override
                                 public void onSuccess(Object o) {
-                                    Toast.makeText(getContext(), R.string.add_success, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getActivity(), R.string.add_success, Toast.LENGTH_LONG).show();
                                 }
                             });
                             setValueTask.addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             });
+
+                            if (bloodPressureReading.getSystolicReading() > 180
+                                    || bloodPressureReading.getDiastolicReading() > 120) {
+                                new WarningAlertDialogFragment().show(
+                                        getFragmentManager(), "Warning Alert Dialog");
+                            }
                         }
                     }
                 })

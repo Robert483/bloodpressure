@@ -1,14 +1,20 @@
 package com.comp3717.vu_gilpin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.comp3717.vu_gilpin.models.BloodPressureReading;
+import com.comp3717.vu_gilpin.services.ConditionService;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,24 +35,49 @@ public class MonthToDateAvgReadings extends AppCompatActivity {
         Intent intent = getIntent();
 
         this.userKey = intent.getStringExtra("userKey");
-        databaseReference = FirebaseDatabase.getInstance().getReference("readings"+userKey);
+        databaseReference = FirebaseDatabase.getInstance().getReference("readings/"+userKey);
 
         tvTitle = findViewById(R.id.mtd_title);
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("MMM yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat(" MMM yyyy");
         String dateFormat = formatter.format(date);
         tvTitle.append(dateFormat);
 
-        tvSystolic = findViewById(R.id.mtd_systolic);
-        // loop through readings and calculate average systolic
+        tvName = findViewById(R.id.name);
+        tvName.setText(intent.getStringExtra("userId"));
 
-        tvDiastolic = findViewById(R.id.mtd_diastolic);
-        // loop through readings and calculate average diastolic
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                float systolicSum = 0;
+                float diastolicSum = 0;
+                int count = 0;
 
-        tvCondition = findViewById(R.id.mtd_condition);
-        BloodPressureReading average = new BloodPressureReading();
-        average.setSystolicReading(/*average systolic*/);
-        average.setDiastolicReading(/*average diastolic*/);
-        tvCondition.setText(average.getCondition());
+                for (DataSnapshot readingSnapshot: dataSnapshot.getChildren()) {
+                    BloodPressureReading reading = readingSnapshot.getValue(BloodPressureReading.class);
+                    systolicSum += reading.getSystolicReading();
+                    diastolicSum += reading.getDiastolicReading();
+                    count++;
+                }
+
+                tvSystolic = findViewById(R.id.mtd_systolic);
+                float avgSystolic = systolicSum/count;
+                tvSystolic.setText(String.format("%.2f", avgSystolic));
+
+                tvDiastolic = findViewById(R.id.mtd_diastolic);
+                float avgDiastolic = diastolicSum/count;
+                tvDiastolic.setText(String.format("%.2f", avgDiastolic));
+
+                tvCondition = findViewById(R.id.mtd_condition);
+                String condition = ConditionService.getCondition(
+                        MonthToDateAvgReadings.this, avgSystolic, avgDiastolic);
+                tvCondition.setText(Html.fromHtml(condition, Html.FROM_HTML_MODE_COMPACT));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

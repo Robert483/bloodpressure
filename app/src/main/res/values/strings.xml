@@ -9,11 +9,25 @@
     <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A)</string>
     <string name="main_users">Available Users</string>
     <string name="readinglist_readings">Blood Pressure Reading</string>
+    <string name="condition_normal"><![CDATA[<font color="#00B050">Normal</font>]]></string>
+    <string name="condition_elevated"><![CDATA[<font color="#CBD38F">Elevated</font>]]></string>
+    <string name="condition_high_1"><![CDATA[<font color="#F2B9A8">High blood pressure (Stage 1)</font>]]></string>
+    <string name="condition_high_2"><![CDATA[<font color="#EB977D">High blood pressure (Stage 2)</font>]]></string>
+    <string name="condition_crisis"><![CDATA[<font color="#AA3B19">Hypertensive crisis<font>]]></string>
+    <string name="condition_warning">Consult your doctor immediately</string>
     <string name="add_reading_title">Add Blood Pressure Reading</string>
     <string name="cancel">Cancel</string>
-    <string name="mtd_title">Month-to-date average readings for </string>
+    <string name="mtd_title">Month-To-Date Average Readings For</string>
     <string name="name">Name</string>
     <string name="avg_condition">Average Condition</string>
     <string name="empty_field">One or more fields are empty…</string>
     <string name="add_success">Reading Successfully Added</string>
+    <string name="mtd_btn">Month To Date Report</string>
+    <string name="warning">
+        <![CDATA[<font color="#FF0000">
+        WARNING: HYPERTENSIVE CRISIS! See doctor immediately
+        <font>]]>
+    </string>
+    <string name="dismiss">Dismiss</string>
+
 </resources>

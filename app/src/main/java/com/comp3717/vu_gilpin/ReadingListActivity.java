@@ -22,22 +22,22 @@ import java.util.List;
 public class ReadingListActivity extends AppCompatActivity {
     private ListView lvReadings;
     private List<BloodPressureReading> readingList;
-    String userKey;
+    private String userKey;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading_list);
-        Intent intent = getIntent();
+//        Intent intent = getIntent();
         LayoutInflater inflater = this.getLayoutInflater();
 
-        this.userKey = intent.getStringExtra("userKey");
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("readings"+userKey);
+//        this.userKey = intent.getStringExtra("userKey");
+//        this.userId = intent.getStringExtra("userId");
+        this.userKey = "-user1";
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("readings/"+userKey);
         this.lvReadings = findViewById(R.id.lstv_readings);
         this.readingList = new ArrayList<>();
-
-        View footerView = inflater.inflate(R.layout.footer_view, null, false);
-        lvReadings.addFooterView(footerView);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -65,6 +65,7 @@ public class ReadingListActivity extends AppCompatActivity {
     public void onMonthToDate(View view) {
         Intent intent = new Intent(ReadingListActivity.this, MonthToDateAvgReadings.class);
         intent.putExtra("userKey", userKey);
+        intent.putExtra("userId", userId);
         startActivity(intent);
     }
 }
