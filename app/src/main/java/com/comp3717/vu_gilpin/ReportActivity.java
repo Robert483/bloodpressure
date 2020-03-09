@@ -18,32 +18,24 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-public class MonthToDateAvgReadings extends AppCompatActivity {
-    DatabaseReference databaseReference;
-    String userKey;
-    TextView tvTitle;
-    TextView tvName;
-    TextView tvSystolic;
-    TextView tvDiastolic;
-    TextView tvCondition;
+public class ReportActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_month_to_date_avg_readings);
+        setContentView(R.layout.activity_report);
         Intent intent = getIntent();
 
-        this.userKey = intent.getStringExtra("userKey");
-        databaseReference = FirebaseDatabase.getInstance().getReference("readings/"+userKey);
+        String userKey = intent.getStringExtra("userKey");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("readings/" + userKey);
 
-        tvTitle = findViewById(R.id.mtd_title);
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat(" MMM yyyy");
-        String dateFormat = formatter.format(date);
-        tvTitle.append(dateFormat);
+        TextView tvTitle = findViewById(R.id.txtv_header);
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM yyyy", Locale.getDefault());
+        tvTitle.setText(getString(R.string.report_header, formatter.format(new Date())));
 
-        tvName = findViewById(R.id.name);
+        TextView tvName = findViewById(R.id.txtv_name);
         tvName.setText(intent.getStringExtra("userId"));
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -53,29 +45,34 @@ public class MonthToDateAvgReadings extends AppCompatActivity {
                 float diastolicSum = 0;
                 int count = 0;
 
-                for (DataSnapshot readingSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot readingSnapshot : dataSnapshot.getChildren()) {
                     BloodPressureReading reading = readingSnapshot.getValue(BloodPressureReading.class);
+                    if (reading == null) {
+                        continue;
+                    }
+
                     systolicSum += reading.getSystolicReading();
                     diastolicSum += reading.getDiastolicReading();
                     count++;
                 }
-                tvSystolic = findViewById(R.id.mtd_systolic);
-                tvDiastolic = findViewById(R.id.mtd_diastolic);
-                tvCondition = findViewById(R.id.mtd_condition);
+
+                TextView tvSystolic = findViewById(R.id.txtv_systolic);
+                TextView tvDiastolic = findViewById(R.id.txtv_diastolic);
+                TextView tvCondition = findViewById(R.id.txtv_condition);
 
                 if (count == 0) {
-                    tvCondition.setText(R.string.na);
-                    tvSystolic.setText(R.string.na);
-                    tvDiastolic.setText(R.string.na);
+                    tvCondition.setText(R.string.app_na);
+                    tvSystolic.setText(R.string.app_na);
+                    tvDiastolic.setText(R.string.app_na);
                 } else {
-                    float avgSystolic = systolicSum/count;
-                    tvSystolic.setText(String.format("%.2f", avgSystolic));
+                    float avgSystolic = systolicSum / count;
+                    tvSystolic.setText(getString(R.string.report_value, avgSystolic));
 
-                    float avgDiastolic = diastolicSum/count;
-                    tvDiastolic.setText(String.format("%.2f", avgDiastolic));
+                    float avgDiastolic = diastolicSum / count;
+                    tvDiastolic.setText(getString(R.string.report_value, avgDiastolic));
 
                     String condition = ConditionService.getCondition(
-                            MonthToDateAvgReadings.this, avgSystolic, avgDiastolic);
+                            ReportActivity.this, avgSystolic, avgDiastolic);
                     tvCondition.setText(Html.fromHtml(condition, Html.FROM_HTML_MODE_COMPACT));
                 }
             }

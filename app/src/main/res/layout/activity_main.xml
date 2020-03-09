@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/main_students"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
         <View
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:fontFamily="sans-serif-thin"
             android:gravity="center"
             android:text="@string/main_users"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
         <View
             android:layout_width="match_parent"
@@ -42,7 +42,9 @@
         <ListView
             android:id="@+id/lstv_users"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="86dp" />
 
     </LinearLayout>
 
@@ -56,7 +58,7 @@
         android:onClick="onAddUserButtonClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add"
+        app:srcCompat="@drawable/app_ic_add"
         app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

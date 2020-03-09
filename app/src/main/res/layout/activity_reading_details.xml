@@ -136,46 +136,25 @@
 
         <TextView
             android:id="@+id/txtv_condition"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_full"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:paddingVertical="@dimen/spacing_half" />
+            android:paddingVertical="@dimen/spacing_half"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
-        <LinearLayout
+        <Button
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing_full"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/readingdetails_ic_update"
-                android:focusable="false"
-                android:onClick="onUpdateButtonClick"
-                android:text="@string/app_update"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                tools:ignore="RtlHardcoded" />
-
-            <Button
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing_full"
-                android:layout_weight="1"
-                android:backgroundTint="@android:color/holo_red_light"
-                android:drawableLeft="@drawable/readingdetails_ic_delete"
-                android:focusable="false"
-                android:onClick="onDeleteButtonClick"
-                android:text="@string/app_delete"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                tools:ignore="RtlHardcoded" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_full"
+            android:drawableLeft="@drawable/readingdetails_ic_update"
+            android:focusable="false"
+            android:onClick="onUpdateButtonClick"
+            android:text="@string/app_update"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            tools:ignore="RtlHardcoded" />
 
     </LinearLayout>
 

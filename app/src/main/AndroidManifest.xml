@@ -12,14 +12,13 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".MonthToDateAvgReadings"
-            android:label="@string/mtd_label"/>
-        <activity
-            android:name=".ReadingListActivity"
-            android:label="@string/reading_list_label" />
+            android:name=".ReportActivity"
+            android:label="@string/report_label" />
+        <activity android:name=".ReadingListActivity" />
         <activity
             android:name=".ReadingDetailsActivity"
-            android:label="@string/reading_details_label" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/readingdetails_label" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

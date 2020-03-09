@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.comp3717.vu_gilpin.models.BloodPressureReading;
 import com.comp3717.vu_gilpin.services.ConditionService;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -122,23 +123,18 @@ public class ReadingDetailsActivity extends AppCompatActivity {
 
     public void onUpdateButtonClick(View view) {
         updateReading();
-        Task<Void> setValuetask = readingRef.setValue(reading);
-        setValuetask.addOnSuccessListener(new OnSuccessListener<Void>() {
+        Task<Void> setValueTask = readingRef.setValue(reading);
+        setValueTask.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(ReadingDetailsActivity.this, R.string.readingdetails_updated, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
-    }
-
-    public void onDeleteButtonClick(View view) {
-        Task<Void> removeValuetask = readingRef.removeValue();
-        removeValuetask.addOnSuccessListener(new OnSuccessListener<Void>() {
+        setValueTask.addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(ReadingDetailsActivity.this, R.string.readingdetails_deleted, Toast.LENGTH_SHORT).show();
-                finish();
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ReadingDetailsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

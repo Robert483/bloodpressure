@@ -6,13 +6,15 @@ import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.comp3717.vu_gilpin.adapters.ReadingAdapter;
+import com.comp3717.vu_gilpin.fragments.NewReadingDialogFragment;
+import com.comp3717.vu_gilpin.fragments.WarningDialogFragment;
 import com.comp3717.vu_gilpin.models.BloodPressureReading;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,8 +29,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReadingListActivity extends AppCompatActivity
-        implements AddNewReadingDialogFragment.DialogListener {
+public class ReadingListActivity extends AppCompatActivity implements NewReadingDialogFragment.DialogListener {
     private ListView lvReadings;
     private List<BloodPressureReading> readingList;
     private String userKey;
@@ -40,26 +41,30 @@ public class ReadingListActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading_list);
         Intent intent = getIntent();
-        LayoutInflater inflater = this.getLayoutInflater();
 
         this.userKey = intent.getStringExtra("userKey");
         this.userId = intent.getStringExtra("userId");
-        databaseReference = FirebaseDatabase.getInstance().getReference("readings/"+userKey);
+        databaseReference = FirebaseDatabase.getInstance().getReference("readings/" + userKey);
         this.lvReadings = findViewById(R.id.lstv_readings);
         this.readingList = new ArrayList<>();
 
-        setTitle(this.getTitle() + " " + userId);
+        setTitle(getString(R.string.readinglist_label, userId));
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 readingList.clear();
-                for (DataSnapshot readingSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot readingSnapshot : dataSnapshot.getChildren()) {
                     BloodPressureReading reading = readingSnapshot.getValue(BloodPressureReading.class);
+                    if (reading == null) {
+                        continue;
+                    }
+
                     reading.setReadingKey(readingSnapshot.getKey());
                     readingList.add(reading);
                 }
-                ReadingListAdapter adapter = new ReadingListAdapter(ReadingListActivity.this, readingList);
+
+                ReadingAdapter adapter = new ReadingAdapter(ReadingListActivity.this, readingList, databaseReference);
                 lvReadings.setAdapter(adapter);
                 lvReadings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -67,7 +72,7 @@ public class ReadingListActivity extends AppCompatActivity
                         Intent intent = new Intent(ReadingListActivity.this, ReadingDetailsActivity.class);
                         intent.putExtra("userKey", userKey);
                         intent.putExtra("userId", userId);
-                        intent.putExtra("readingKey", readingList.get((int)id).getReadingKey());
+                        intent.putExtra("readingKey", readingList.get((int) id).getReadingKey());
                         startActivity(intent);
                     }
                 });
@@ -81,6 +86,10 @@ public class ReadingListActivity extends AppCompatActivity
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
+        if (dialog.getDialog() == null) {
+            return;
+        }
+
         EditText editTextSystolic = dialog.getDialog().findViewById(R.id.systolicReading);
         EditText editTextDiastolic = dialog.getDialog().findViewById(R.id.diastolicReading);
 
@@ -90,7 +99,7 @@ public class ReadingListActivity extends AppCompatActivity
 
         if (systolic.isEmpty() || diastolic.isEmpty()) {
             // do nothing
-            Toast.makeText(ReadingListActivity.this, R.string.empty_field, Toast.LENGTH_LONG).show();
+            Toast.makeText(ReadingListActivity.this, R.string.readinglist_empty_fields, Toast.LENGTH_LONG).show();
         } else {
             // add to firebase
             BloodPressureReading bloodPressureReading = new BloodPressureReading();
@@ -98,14 +107,17 @@ public class ReadingListActivity extends AppCompatActivity
             bloodPressureReading.setDiastolicReading(Integer.parseInt(diastolic));
             bloodPressureReading.setReadingDate(new Date());
             String readingId = databaseReference.push().getKey();
+            if (readingId == null) {
+                return;
+            }
 
             // Notify user of success or fail
-            Task setValueTask = databaseReference.child(readingId)
+            Task<Void> setValueTask = databaseReference.child(readingId)
                     .setValue(bloodPressureReading);
-            setValueTask.addOnSuccessListener(new OnSuccessListener() {
+            setValueTask.addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
-                public void onSuccess(Object o) {
-                    Toast.makeText(ReadingListActivity.this, R.string.add_success, Toast.LENGTH_LONG).show();
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(ReadingListActivity.this, R.string.readinglist_added, Toast.LENGTH_LONG).show();
                 }
             });
             setValueTask.addOnFailureListener(new OnFailureListener() {
@@ -117,21 +129,14 @@ public class ReadingListActivity extends AppCompatActivity
 
             if (bloodPressureReading.getSystolicReading() > 180
                     || bloodPressureReading.getDiastolicReading() > 120) {
-                new WarningAlertDialogFragment().show(
-                        getSupportFragmentManager(), "WarningAlertDialogFragment");
+                new WarningDialogFragment().show(
+                        getSupportFragmentManager(), "WarningDialogFragment");
             }
         }
     }
 
     public void onAddReadingButtonClick(View view) {
-        new AddNewReadingDialogFragment().show(getSupportFragmentManager(),
-                "AddNewReadingDialogFragment");
-    }
-
-    public void onMonthToDate(View view) {
-        Intent intent = new Intent(ReadingListActivity.this, MonthToDateAvgReadings.class);
-        intent.putExtra("userKey", userKey);
-        intent.putExtra("userId", userId);
-        startActivity(intent);
+        new NewReadingDialogFragment().show(getSupportFragmentManager(),
+                "NewReadingDialogFragment");
     }
 }

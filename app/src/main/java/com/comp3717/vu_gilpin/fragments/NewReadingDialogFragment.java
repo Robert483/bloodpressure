@@ -1,15 +1,20 @@
-package com.comp3717.vu_gilpin;
+package com.comp3717.vu_gilpin.fragments;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import com.comp3717.vu_gilpin.R;
+
+import java.util.Objects;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.DialogFragment;
 
-public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
+public class NewReadingDialogFragment extends AppCompatDialogFragment {
 
     public interface DialogListener {
         void onDialogPositiveClick(DialogFragment dialog);
@@ -18,7 +23,7 @@ public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
     private DialogListener listener;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
             listener = (DialogListener) context;
@@ -27,24 +32,19 @@ public class AddNewReadingDialogFragment extends AppCompatDialogFragment {
         }
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-        builder.setView(R.layout.dialog_add_reading)
-                .setTitle(R.string.add_reading_title)
+        AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+        builder.setView(R.layout.dialog_new_reading)
+                .setTitle(R.string.readinglist_new_reading)
                 .setPositiveButton(R.string.app_add, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        listener.onDialogPositiveClick(AddNewReadingDialogFragment.this);
+                        listener.onDialogPositiveClick(NewReadingDialogFragment.this);
                     }
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        AddNewReadingDialogFragment.this.getDialog().cancel();
-                    }
-                });
+                .setNegativeButton(R.string.app_cancel, null);
 
         return builder.create();
     }

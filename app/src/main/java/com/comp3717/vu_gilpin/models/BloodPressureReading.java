@@ -4,8 +4,6 @@ import com.google.firebase.database.Exclude;
 
 import java.util.Date;
 
-import androidx.annotation.NonNull;
-
 public class BloodPressureReading {
     @Exclude
     private String readingKey;

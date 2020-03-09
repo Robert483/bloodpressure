@@ -1,51 +1,52 @@
 <resources>
     <string name="app_name">Vu_Gilpin</string>
+    <string name="app_na">N/A</string>
     <string name="app_add">Add</string>
     <string name="app_cancel">Cancel</string>
     <string name="app_update">Update</string>
     <string name="app_delete">Delete</string>
+    <string name="app_dismiss">Dismiss</string>
+    <string name="app_warning">Warning</string>
     <string name="app_systolic">Systolic reading</string>
     <string name="app_diastolic">Diastolic reading</string>
     <string name="app_operation_cancelled">Operation cancelled</string>
+
+    <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A01063832)</string>
+    <string name="main_users">Available Users</string>
+    <string name="main_user_id">User ID</string>
+    <string name="main_new_user">New User</string>
+    <string name="main_no_name">Name cannot be empty.</string>
+    <string name="main_added">User added.</string>
+    <string name="main_internal_id">Internal ID: %s</string>
+    <string name="main_view_report">View report</string>
+
+    <string name="readinglist_label">Reading List for %s</string>
+    <string name="readinglist_readings">Blood Pressure</string>
+    <string name="readinglist_new_reading">New Blood Pressure Reading</string>
+    <string name="readinglist_empty_fields">One or more fields are empty.</string>
+    <string name="readinglist_added">Reading added.</string>
+    <string name="readinglist_view_report">View Report</string>
+
+    <string name="readingdetails_label">Reading Details</string>
     <string name="readingdetails_user_id">User ID</string>
     <string name="readingdetails_reading_date">Reading date</string>
     <string name="readingdetails_reading_time">Reading time</string>
     <string name="readingdetails_condition"><![CDATA[Condition<br>%s]]></string>
     <string name="readingdetails_updated">Reading updated.</string>
     <string name="readingdetails_deleted">Reading deleted.</string>
-    <string name="main_students">Robert Vu (A01044795)\nJohn Gilpin (A01063832)</string>
-    <string name="main_users">Available Users</string>
-    <string name="readinglist_readings">Blood Pressure Reading</string>
+
+    <string name="report_label">Month-to-Date Report</string>
+    <string name="report_header">Month-to-Date Average Readings for %s</string>
+    <string name="report_name">Name</string>
+    <string name="report_condition">Average condition</string>
+    <string name="report_title">Report</string>
+    <string name="report_value">%.2f</string>
+
     <string name="condition_normal"><![CDATA[<font color="#00B050">Normal</font>]]></string>
     <string name="condition_elevated"><![CDATA[<font color="#CBD38F">Elevated</font>]]></string>
     <string name="condition_high_1"><![CDATA[<font color="#F2B9A8">High blood pressure (Stage 1)</font>]]></string>
     <string name="condition_high_2"><![CDATA[<font color="#EB977D">High blood pressure (Stage 2)</font>]]></string>
-    <string name="condition_crisis"><![CDATA[<font color="#AA3B19">Hypertensive crisis<font>]]></string>
-    <string name="condition_warning">Consult your doctor immediately</string>
-    <string name="add_reading_title">Add Blood Pressure Reading</string>
-    <string name="cancel">Cancel</string>
-    <string name="mtd_title">Month-to-Date Average Readings for</string>
-    <string name="name">Name</string>
-    <string name="avg_condition">Average Condition</string>
-    <string name="empty_field">One or more fields are empty…</string>
-    <string name="add_success">Reading Successfully Added</string>
-    <string name="mtd_btn">View Report</string>
-    <string name="warning">
-        <![CDATA[<font color="#FF0000">
-        WARNING: HYPERTENSIVE CRISIS! See doctor immediately
-        <font>]]>
-    </string>
-    <string name="dismiss">Dismiss</string>
-
-    <string name="main_user_id">User ID</string>
-    <string name="main_new_user">New User</string>
-    <string name="main_no_name">Name cannot be empty.</string>
-    <string name="main_added">User added.</string>
-    <string name="main_internal_id">Internal ID: %s</string>
-
-    <string name="mtd_label">Month-to-Date Report</string>
-    <string name="reading_list_label">Reading List for</string>
-    <string name="reading_details_label">Reading Details</string>
-
-    <string name="na">N/A</string>
+    <string name="condition_crisis"><![CDATA[<font color="#AA3B19">Hypertensive crisis</font>]]></string>
+    <string name="condition_warning"><![CDATA[<font color="#FF0000">HYPERTENSIVE CRISIS! See doctor immediately<font>]]></string>
+    <string name="readinglist_summary"><![CDATA[<b>%d / %d</b> - %s]]></string>
 </resources>

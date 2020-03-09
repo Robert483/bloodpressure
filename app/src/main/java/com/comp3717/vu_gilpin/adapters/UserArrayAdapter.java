@@ -1,15 +1,16 @@
 package com.comp3717.vu_gilpin.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.comp3717.vu_gilpin.R;
+import com.comp3717.vu_gilpin.ReportActivity;
 import com.comp3717.vu_gilpin.models.User;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,24 +23,31 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         this.resouce = resource;
     }
 
-    public UserArrayAdapter(@NonNull Context context, int resource, @NonNull User[] objects) {
-        super(context, resource, objects);
-        this.resouce = resource;
-    }
-
-    public UserArrayAdapter(@NonNull Context context, int resource, @NonNull List<User> objects) {
-        super(context, resource, objects);
-        this.resouce = resource;
-    }
-
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        final Context context = getContext();
+        final User user = getItem(position);
+
         if (convertView == null) {
-            convertView = View.inflate(getContext(), resouce, null);
+            convertView = View.inflate(context, resouce, null);
         }
 
-        User user = getItem(position);
+        ImageButton button = convertView.findViewById(R.id.imgbtn_view_report);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (user == null) {
+                    return;
+                }
+
+                Intent intent = new Intent(context, ReportActivity.class);
+                intent.putExtra("userKey", user.getKey());
+                intent.putExtra("userId", user.getUserId());
+                context.startActivity(intent);
+            }
+        });
+
         if (user != null) {
             String internalId = parent.getContext().getString(R.string.main_internal_id, user.getKey());
 

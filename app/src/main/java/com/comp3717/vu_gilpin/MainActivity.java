@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.comp3717.vu_gilpin.adapters.UserArrayAdapter;
 import com.comp3717.vu_gilpin.models.User;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     public void onAddUserButtonClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(R.layout.dialog_new_user);
-        builder.setMessage(R.string.main_new_user);
+        builder.setTitle(R.string.main_new_user);
         builder.setPositiveButton(R.string.app_add, null);
         builder.setNegativeButton(R.string.app_cancel, null);
 
@@ -93,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                User user = new User(textView.getText().toString());
+                User user = new User();
+                user.setUserId(textView.getText().toString());
+
                 String key = userRef.push().getKey();
                 if (key == null) {
                     dialog.dismiss();
@@ -105,6 +108,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(MainActivity.this, R.string.main_added, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                setValueTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
                 dialog.dismiss();
