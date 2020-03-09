@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.comp3717.vu_gilpin.R;
-import com.comp3717.vu_gilpin.ReadingDetailsActivity;
 import com.comp3717.vu_gilpin.models.BloodPressureReading;
 import com.comp3717.vu_gilpin.services.ConditionService;
 import com.google.android.gms.tasks.OnFailureListener;
